@@ -4,20 +4,20 @@ import richWord as rw
 class MultiDictionary:
 
     def __init__(self):
-        self._english = d.Dictionary([], "english")
-        self._italian = d.Dictionary([], "italian")
-        self._spanish = d.Dictionary([], "spanish")
+        self._english = d.Dictionary(language= "english")
+        self._italian = d.Dictionary(language="italian")
+        self._spanish = d.Dictionary(language="spanish")
 
         self._english.loadDictionary("resources/English.txt")
         self._italian.loadDictionary("resources/Italian.txt")
         self._spanish.loadDictionary("resources/Spanish.txt")
 
     def printDic(self, language):
-        if language == "english":
+        if language == "inglese":
             self._english.printAll()
-        elif language == "italian":
+        elif language == "italiano":
             self._italian.printAll()
-        elif language == "spanish":
+        elif language == "spagnolo":
             self._spanish.printAll()
         else:
             print("Language not supported")
@@ -81,13 +81,13 @@ class MultiDictionary:
             word = word.lower()
             found = False
             richW = rw.RichWord(word)
-            if language == "english":
+            if language == "inglese":
                 currentDic = self._english.dict
                 found = dichotomicSearch(word, currentDic)
-            elif language == "italian":
+            elif language == "italia":
                 currentDic = self._italian.dict
                 found = dichotomicSearch(word, currentDic)
-            elif language == "spanish":
+            elif language == "spagnolo":
                 currentDic = self._spanish.dict
                 found = dichotomicSearch(word, currentDic)
             if (found):

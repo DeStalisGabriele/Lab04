@@ -1,4 +1,8 @@
+from itertools import count
+
 import flet as ft
+
+
 
 class View(object):
     def __init__(self, page: ft.Page):
@@ -27,8 +31,52 @@ class View(object):
         )
 
         # Add your stuff here
+        #row1
+        self._ddLingua = ft.Dropdown(
+            label="Seleziona la lingua:",
+            options=[
+                ft.dropdown.Option("italiano"),
+                ft.dropdown.Option("inglese"),
+                ft.dropdown.Option("spagnolo")],
+            width=200,
+            on_change=self.__controller.handleLinguaChange
+            )
+
+        #row2
+        self._ddRicerca = ft.Dropdown(
+            label="Seleziona tipo di ricerca :",
+            options=[
+                ft.dropdown.Option("Default"),
+                ft.dropdown.Option("Linear"),
+                ft.dropdown.Option("Dichotomic")
+            ],
+            on_change=self.__controller.handleRicercaChange
+        )
+
+        self.txtInput = ft.TextField(
+            label="Inserisci testo:",
+            expand = True  # occupa tutto lo spazio centrale
+        )
+
+        self.ddCorrezione = ft.ElevatedButton(
+            text="Correzione",
+            on_click=self.__controller.handleSpellCheck
+
+        )
+
+        self._ddPrint = ft.ListView(expand=True, spacing=10, padding=20, auto_scroll=True)
+
+        #assemblaggio righe
+        self._row1 = ft.Row(controls=[self._ddLingua])
+        self._row2 = ft.Row(controls=[
+            self._ddRicerca,
+            self.txtInput,
+            self.ddCorrezione
+        ])
+        self._row3 = ft.Row(controls=[self._ddPrint])
 
         # self.page.add([])
+        self.page.add(self._row1, self._row2, self._row3)
 
         self.page.update()
 

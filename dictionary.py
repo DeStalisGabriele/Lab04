@@ -1,11 +1,11 @@
 class Dictionary:
     def __init__(self, dict=[], language = ""):
-        self._dict = dict
+        self._dict = []
         self._language = language
 
     def loadDictionary(self,path):
         file_path = path
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding="utf-8") as file:
             for line in file:
                 value = line.strip()
                 self._dict.append(value.lower())
