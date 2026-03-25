@@ -35,9 +35,9 @@ class View(object):
         self._ddLingua = ft.Dropdown(
             label="Seleziona la lingua:",
             options=[
-                ft.dropdown.Option("italiano"),
-                ft.dropdown.Option("inglese"),
-                ft.dropdown.Option("spagnolo")],
+                ft.dropdown.Option("italian"),
+                ft.dropdown.Option("english"),
+                ft.dropdown.Option("spanish")],
             width=200,
             on_change=self.__controller.handleLinguaChange
             )
